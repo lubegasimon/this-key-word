@@ -3,35 +3,34 @@
 // // However, the call-site uses the obj context to reference the function,
 // //  so you could say that the obj object "owns" or "contains" the function 
 // //  reference at the time the function is called.
-// console.log('first:');
 
-// function foo(){
-//     console.log(this.b);
-// };
+console.log('first:');
 
-// var obj = {
-//     b: 4,
-//     foo: foo
-// }
-// obj.foo();//default binding.
+function foo(){
+    console.log(this.b);
+};
 
-// console.log('second:');
+var obj = {
+    b: 4,
+    foo: foo
+}
+obj.foo();//default binding.
 
-// function bar(){
-//     console.log(this.a);
-// }
-// var obj1 = {
-//     a: 49,
-//     bar: bar
-// }
-// var obj2 = {
-//     a: 8,
-//     obj1: obj1
-// }
+console.log('second:');
 
-// obj2.obj1.bar();
+function bar(){
+    console.log(this.a);
+}
+var obj1 = {
+    a: 49,
+    bar: bar
+}
+var obj2 = {
+    a: 8,
+    obj1: obj1
+}
 
-// console.log('thrid:');
+obj2.obj1.bar();
 
 // function boo(){
 //     console.log(this.c);
@@ -44,34 +43,9 @@
 //      boo
 //  }
 
-//  var c = 'Implicitly lost!';
+//  var c = 'Implicit lost!';
 
 //  doFoo(obj4.boo());
 
 
-// function foo() {
-// 	console.log( this.a );
-// }
 
-// function doFoo(fn) {
-// 	// `fn` is just another reference to `foo`
-
-// 	fn(); // <-- call-site!
-// }
-
-// var obj = {
-// 	a: 2,
-// 	foo: foo
-// };
-
-// var a = "oops, global"; // `a` also property on global object
-
-// doFoo( obj.foo ); // "oops, global"
-
-function foo(){
-    console.log(this.a);
-}
-
-var a = 4;
-
-foo();
